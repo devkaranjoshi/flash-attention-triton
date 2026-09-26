@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.ipynb_checkpoints/
+*.ncu-rep
+*.nsys-rep
+.DS_Store
+.idea/
+.vscode/

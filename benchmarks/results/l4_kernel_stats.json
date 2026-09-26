@@ -1,0 +1,309 @@
+{
+  "gpu": "NVIDIA L4",
+  "B": 1,
+  "H": 8,
+  "D": 64,
+  "runs": {
+    "1024": {
+      "online_softmax_attention": {
+        "launches_per_step": 1,
+        "mean_us": 186.8886000000003,
+        "compiled": [
+          {
+            "regs": 168,
+            "spills": 0,
+            "shared_bytes": 98304,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_score_kernel": {
+        "launches_per_step": 2,
+        "mean_us": 405.29099999999966,
+        "compiled": [
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_softmax_kernel": {
+        "launches_per_step": 2,
+        "mean_us": 137.97520000000108,
+        "compiled": [
+          {
+            "regs": 26,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_output_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 154.25200000000254,
+        "compiled": [
+          {
+            "regs": 56,
+            "spills": 0,
+            "shared_bytes": 40960,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dp_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 409.66869999999983,
+        "compiled": [
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_ds_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 399.90530000000035,
+        "compiled": [
+          {
+            "regs": 33,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dq_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 816.3803000000004,
+        "compiled": [
+          {
+            "regs": 39,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dk_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 2028.7360000000015,
+        "compiled": [
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dv_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 2113.257100000002,
+        "compiled": [
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      }
+    },
+    "4096": {
+      "online_softmax_attention": {
+        "launches_per_step": 1,
+        "mean_us": 1414.1723999999926,
+        "compiled": [
+          {
+            "regs": 168,
+            "spills": 0,
+            "shared_bytes": 98304,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 168,
+            "spills": 0,
+            "shared_bytes": 98304,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_score_kernel": {
+        "launches_per_step": 2,
+        "mean_us": 7918.169850000029,
+        "compiled": [
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_softmax_kernel": {
+        "launches_per_step": 2,
+        "mean_us": 4571.113099999979,
+        "compiled": [
+          {
+            "regs": 26,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 51,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "forward_output_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 2558.4780999999944,
+        "compiled": [
+          {
+            "regs": 56,
+            "spills": 0,
+            "shared_bytes": 40960,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 56,
+            "spills": 0,
+            "shared_bytes": 40960,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dp_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 7789.803999999999,
+        "compiled": [
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 128,
+            "spills": 0,
+            "shared_bytes": 20480,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_ds_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 6932.015999999987,
+        "compiled": [
+          {
+            "regs": 33,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 80,
+            "spills": 0,
+            "shared_bytes": 16,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dq_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 15199.862800000014,
+        "compiled": [
+          {
+            "regs": 39,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 39,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dk_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 42204.2048,
+        "compiled": [
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      },
+      "backward_dv_kernel": {
+        "launches_per_step": 1,
+        "mean_us": 40978.36100000001,
+        "compiled": [
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          },
+          {
+            "regs": 40,
+            "spills": 0,
+            "shared_bytes": 1024,
+            "num_warps": 4,
+            "num_stages": 3
+          }
+        ]
+      }
+    }
+  }
+}

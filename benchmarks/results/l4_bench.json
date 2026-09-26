@@ -1,0 +1,218 @@
+{
+  "gpu": "NVIDIA L4",
+  "B": 1,
+  "H": 8,
+  "D": 64,
+  "rows": [
+    {
+      "N": 256,
+      "case": "online forward",
+      "ms": 0.3618952699682929,
+      "peak_mib": 1.5
+    },
+    {
+      "N": 256,
+      "case": "naive Triton fwd",
+      "ms": 0.053051914227135635,
+      "peak_mib": 4.5
+    },
+    {
+      "N": 256,
+      "case": "naive Triton bwd",
+      "ms": 0.34827243234660177,
+      "peak_mib": 9.5
+    },
+    {
+      "N": 256,
+      "case": "PyTorch eager fwd",
+      "ms": 0.08572799922979396,
+      "peak_mib": 4.5
+    },
+    {
+      "N": 256,
+      "case": "PyTorch eager fwd+bwd",
+      "ms": 0.2019222832861401,
+      "peak_mib": 9.0
+    },
+    {
+      "N": 256,
+      "case": "PyTorch SDPA fwd",
+      "ms": 0.05313906319280888,
+      "peak_mib": 0.5
+    },
+    {
+      "N": 256,
+      "case": "PyTorch SDPA fwd+bwd",
+      "ms": 0.1662928382324618,
+      "peak_mib": 3.0234375
+    },
+    {
+      "N": 512,
+      "case": "online forward",
+      "ms": 0.6847017900697117,
+      "peak_mib": 3.0
+    },
+    {
+      "N": 512,
+      "case": "naive Triton fwd",
+      "ms": 0.15964799703553664,
+      "peak_mib": 17.0
+    },
+    {
+      "N": 512,
+      "case": "naive Triton bwd",
+      "ms": 1.4581272488548642,
+      "peak_mib": 35.0
+    },
+    {
+      "N": 512,
+      "case": "PyTorch eager fwd",
+      "ms": 0.22388136386871338,
+      "peak_mib": 17.0
+    },
+    {
+      "N": 512,
+      "case": "PyTorch eager fwd+bwd",
+      "ms": 0.4716141171315137,
+      "peak_mib": 34.0
+    },
+    {
+      "N": 512,
+      "case": "PyTorch SDPA fwd",
+      "ms": 0.12204145555469123,
+      "peak_mib": 1.0
+    },
+    {
+      "N": 512,
+      "case": "PyTorch SDPA fwd+bwd",
+      "ms": 0.43781929419321175,
+      "peak_mib": 6.78125
+    },
+    {
+      "N": 1024,
+      "case": "online forward",
+      "ms": 1.3316906690597534,
+      "peak_mib": 6.0
+    },
+    {
+      "N": 1024,
+      "case": "naive Triton fwd",
+      "ms": 0.696013867855072,
+      "peak_mib": 66.0
+    },
+    {
+      "N": 1024,
+      "case": "naive Triton bwd",
+      "ms": 7.09990398089091,
+      "peak_mib": 134.0
+    },
+    {
+      "N": 1024,
+      "case": "PyTorch eager fwd",
+      "ms": 0.9229784630812131,
+      "peak_mib": 66.0
+    },
+    {
+      "N": 1024,
+      "case": "PyTorch eager fwd+bwd",
+      "ms": 2.838843033863948,
+      "peak_mib": 132.0
+    },
+    {
+      "N": 1024,
+      "case": "PyTorch SDPA fwd",
+      "ms": 0.3889208883047104,
+      "peak_mib": 2.0
+    },
+    {
+      "N": 1024,
+      "case": "PyTorch SDPA fwd+bwd",
+      "ms": 1.335052183696202,
+      "peak_mib": 12.09375
+    },
+    {
+      "N": 2048,
+      "case": "online forward",
+      "ms": 2.6069465233729434,
+      "peak_mib": 12.0
+    },
+    {
+      "N": 2048,
+      "case": "naive Triton fwd",
+      "ms": 3.596117297808329,
+      "peak_mib": 260.0
+    },
+    {
+      "N": 2048,
+      "case": "naive Triton bwd",
+      "ms": 30.486528396606445,
+      "peak_mib": 524.0
+    },
+    {
+      "N": 2048,
+      "case": "PyTorch eager fwd",
+      "ms": 3.983667230606079,
+      "peak_mib": 260.0
+    },
+    {
+      "N": 2048,
+      "case": "PyTorch eager fwd+bwd",
+      "ms": 11.887274742126465,
+      "peak_mib": 520.0
+    },
+    {
+      "N": 2048,
+      "case": "PyTorch SDPA fwd",
+      "ms": 1.3162300813765753,
+      "peak_mib": 4.0
+    },
+    {
+      "N": 2048,
+      "case": "PyTorch SDPA fwd+bwd",
+      "ms": 4.785408020019531,
+      "peak_mib": 24.1875
+    },
+    {
+      "N": 4096,
+      "case": "online forward",
+      "ms": 8.006041431427002,
+      "peak_mib": 24.0
+    },
+    {
+      "N": 4096,
+      "case": "naive Triton fwd",
+      "ms": 15.04699738820394,
+      "peak_mib": 1032.0
+    },
+    {
+      "N": 4096,
+      "case": "naive Triton bwd",
+      "ms": 125.48812866210938,
+      "peak_mib": 2072.0
+    },
+    {
+      "N": 4096,
+      "case": "PyTorch eager fwd",
+      "ms": 15.088639895121256,
+      "peak_mib": 1032.0
+    },
+    {
+      "N": 4096,
+      "case": "PyTorch eager fwd+bwd",
+      "ms": 47.492095947265625,
+      "peak_mib": 2064.0
+    },
+    {
+      "N": 4096,
+      "case": "PyTorch SDPA fwd",
+      "ms": 5.024914196559361,
+      "peak_mib": 8.0
+    },
+    {
+      "N": 4096,
+      "case": "PyTorch SDPA fwd+bwd",
+      "ms": 18.077183723449707,
+      "peak_mib": 48.375
+    }
+  ]
+}

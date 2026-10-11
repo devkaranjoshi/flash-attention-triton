@@ -21,10 +21,10 @@ O = P V                 dS = P ⊙ (dP − rowsum(P ⊙ dP))
 All 47 correctness tests pass (N up to 4096, D up to 128). Full details are in the
 **[evaluation report](docs/REPORT.md)**.
 
-| N (B=1, H=8, D=64) | Naive fwd | Naive bwd | PyTorch eager fwd+bwd | PyTorch SDPA fwd+bwd | Naive bwd memory |
-|---|---|---|---|---|---|
-| 1024 | 0.70 ms | 7.1 ms | 2.8 ms | 1.3 ms | 134 MiB |
-| 4096 | 15.0 ms | 125.5 ms | 47.5 ms | 18.1 ms | 2072 MiB |
+| N (B=1, H=8, D=64) | Naive fwd |
+|---|---|
+| 1024 | 0.70 ms |
+| 4096 | 15.0 ms |
 
 The fused forward uses 24 MiB at N = 4096, versus 1 GiB for the naive forward.
 

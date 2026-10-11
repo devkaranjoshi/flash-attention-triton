@@ -19,7 +19,6 @@ from torch.profiler import ProfilerActivity, profile
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from flash_attention import (  # noqa: E402
-    attention_backward_triton,
     attention_forward_triton,
     flash_attention_forward,
 )
@@ -32,12 +31,7 @@ KERNELS = {
     "online_softmax_attention": online_forward.online_softmax_attention,
     "forward_score_kernel": naive_triton.forward_score_kernel,
     "forward_softmax_kernel": naive_triton.forward_softmax_kernel,
-    "forward_output_kernel": naive_triton.forward_output_kernel,
-    "backward_dp_kernel": naive_triton.backward_dp_kernel,
-    "backward_ds_kernel": naive_triton.backward_ds_kernel,
-    "backward_dq_kernel": naive_triton.backward_dq_kernel,
-    "backward_dk_kernel": naive_triton.backward_dk_kernel,
-    "backward_dv_kernel": naive_triton.backward_dv_kernel,
+    "forward_output_kernel": naive_triton.forward_output_kernel
 }
 
 
@@ -66,7 +60,6 @@ def run(N):
     def step():
         flash_attention_forward(q0, k0, v0)
         attention_forward_triton(Q, K, V)
-        attention_backward_triton(Q, K, V, dO)
 
     step()
     torch.cuda.synchronize()
@@ -76,7 +69,6 @@ def run(N):
             step()
         torch.cuda.synchronize()
 
-    # The backward re-runs the score + softmax kernels: separate those launches
     times = defaultdict(list)
     for evt in prof.events():
         if evt.device_type == torch.autograd.DeviceType.CUDA and evt.name in KERNELS:

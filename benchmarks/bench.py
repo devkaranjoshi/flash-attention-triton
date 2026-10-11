@@ -2,8 +2,8 @@
 
 Compares, for each sequence length N:
   * online forward      - fused online-softmax kernel (one head, looped over B*H heads)
-  * naive Triton fwd/bwd - materialises [B,H,N,N] S / P / dP / dS
-  * PyTorch eager        - matmul + softmax + matmul, autograd backward
+  * naive Triton fwd - materialises [B,H,N,N] S / P / dP / dS
+  * PyTorch eager        - matmul + softmax + matmul
   * PyTorch SDPA         - F.scaled_dot_product_attention (fused)
 
 Usage:  python benchmarks/bench.py [--out results.json]
@@ -22,7 +22,6 @@ import triton
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from flash_attention import (  # noqa: E402
-    attention_backward_triton,
     attention_forward_triton,
     attention_reference,
     flash_attention_forward,
@@ -53,17 +52,6 @@ def online_forward_all_heads(Q, K, V):
         for b in range(B) for h in range(H)
     ]).view(B, H, -1, D)
 
-
-def eager_fwd_bwd(Q, K, V, dO):
-    q, k, v = (t.detach().requires_grad_(True) for t in (Q, K, V))
-    attention_reference(q, k, v).backward(dO)
-
-
-def sdpa_fwd_bwd(Q, K, V, dO):
-    q, k, v = (t.detach().requires_grad_(True) for t in (Q, K, V))
-    F.scaled_dot_product_attention(q, k, v).backward(dO)
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=None)
@@ -81,11 +69,8 @@ def main():
         cases = {
             "online forward": lambda: online_forward_all_heads(Q, K, V),
             "naive Triton fwd": lambda: attention_forward_triton(Q, K, V),
-            "naive Triton bwd": lambda: attention_backward_triton(Q, K, V, dO),
             "PyTorch eager fwd": lambda: attention_reference(Q, K, V),
-            "PyTorch eager fwd+bwd": lambda: eager_fwd_bwd(Q, K, V, dO),
-            "PyTorch SDPA fwd": lambda: F.scaled_dot_product_attention(Q, K, V),
-            "PyTorch SDPA fwd+bwd": lambda: sdpa_fwd_bwd(Q, K, V, dO),
+            "PyTorch SDPA fwd": lambda: F.scaled_dot_product_attention(Q, K, V)
         }
         for name, fn in cases.items():
             ms, mib = measure(fn)
